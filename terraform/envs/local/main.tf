@@ -1,5 +1,5 @@
 locals {
-  project = "mini-storage"
+  project = "bucketbroker"
   env     = "local"
 
   tags = {

@@ -1,4 +1,4 @@
-# Design: mini storage platform
+# Design: bucketbroker
 
 > Status: **Draft**. Update this doc as each phase lands. A design doc that matches reality is
 > worth more in an interview than a perfect one that doesn't.

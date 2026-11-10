@@ -1,4 +1,4 @@
-# mini-storage: a small storage-as-a-service platform
+# bucketbroker: multi-tenant storage-as-a-service on AWS
 
 A learning project. A developer asks for storage (`blob`, `queue`, …) for a tenant, and the platform
 provisions it **encrypted, isolated, within quota, and tagged** on AWS, using Terraform modules

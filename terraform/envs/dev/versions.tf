@@ -17,7 +17,7 @@ terraform {
   #
   # backend "s3" {
   #   bucket       = "<your-unique-state-bucket>"
-  #   key          = "mini-storage/dev/terraform.tfstate"
+  #   key          = "bucketbroker/dev/terraform.tfstate"
   #   region       = "<your selected Region>"
   #   encrypt      = true
   #   use_lockfile = true

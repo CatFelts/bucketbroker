@@ -1,3 +1,3 @@
-module mini-storage/controlplane
+module bucketbroker/controlplane
 
 go 1.26
