@@ -19,7 +19,9 @@ terraform.rc
 *.tfvars.json
 !*.tfvars.example
 
-# Keep .terraform.lock.hcl committed — it pins provider checksums.
+# Commit .terraform.lock.hcl in root configs (terraform/envs/*). It pins exact provider versions + checksums.
+# Don't commit it in reusable modules. Modules don't choose versions; the root config that calls them does.
+terraform/modules/**/.terraform.lock.hcl
 
 # Local secrets
 .env
@@ -32,6 +34,7 @@ volume/
 
 # Go
 controlplane/bin/
+controlplane/controlplane
 *.test
 *.out
 coverage.*
