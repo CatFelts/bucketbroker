@@ -1,0 +1,43 @@
+# Terraform working dirs and state — state can contain secrets, never commit it
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+tfplan
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+
+# Variable files often hold environment-specific or secret values.
+# Commit only *.tfvars.example files.
+*.tfvars
+*.tfvars.json
+!*.tfvars.example
+
+# Keep .terraform.lock.hcl committed — it pins provider checksums.
+
+# Local secrets
+.env
+.env.*
+!.env.example
+
+# LocalStack runtime data
+.localstack/
+volume/
+
+# Go
+controlplane/bin/
+*.test
+*.out
+coverage.*
+
+# Editors / OS
+.idea/
+.vscode/
+*.swp
+.DS_Store

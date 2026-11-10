@@ -1,0 +1,19 @@
+# LocalStack: a local emulator of AWS APIs, so you can run `terraform apply` for free.
+# Since release 2026.03.0, LocalStack requires an auth token, including on the free Hobby plan.
+# Put it in .env (see .env.example). Docker Compose reads .env automatically.
+services:
+  localstack:
+    container_name: localstack
+    # Pin to a dated release rather than `latest` so runs are reproducible.
+    # Check https://hub.docker.com/r/localstack/localstack/tags and bump deliberately.
+    image: localstack/localstack:2026.10.4
+    ports:
+      - "127.0.0.1:4566:4566" # single edge port for all AWS services
+    environment:
+      LOCALSTACK_AUTH_TOKEN: ${LOCALSTACK_AUTH_TOKEN:?set LOCALSTACK_AUTH_TOKEN in .env}
+      # Only start what we use. That makes startup faster and lowers memory use.
+      SERVICES: s3,sqs,kms,iam,sts
+      # Uncomment to see every API call LocalStack receives. Good for learning what Terraform does.
+      # DEBUG: "1"
+    # No docker.sock mount. It's only needed for Lambda/ECS emulation, and giving a container
+    # the Docker socket is effectively root on the host (least privilege).
