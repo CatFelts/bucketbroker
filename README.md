@@ -41,6 +41,9 @@ docs/                design doc, ADRs, on-prem→cloud mapping, learning log
 Run these once. Read each command before you run it.
 
 ```bash
+# Build tools: make (for the Makefile) and gcc (Go's race detector, `go test -race`, needs cgo)
+sudo apt update && sudo apt install -y build-essential
+
 # Terraform (HashiCorp apt repo)
 wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
