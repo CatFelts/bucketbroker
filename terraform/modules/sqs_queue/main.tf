@@ -30,7 +30,7 @@
 #
 # DONE WHEN
 #   [ ] `make check` passes
-#   [ ] After apply: `awslocal sqs send-message` / `receive-message` round-trip works
+#   [ ] After apply: `lstk aws sqs send-message` / `receive-message` round-trip works
 #   [ ] Receive a message without deleting it more than max_receive_count times, then confirm
 #       it appears in the DLQ
 #   [ ] You can explain: standard vs FIFO, at-least-once delivery, why consumers must be idempotent

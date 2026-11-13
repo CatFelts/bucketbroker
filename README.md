@@ -53,9 +53,13 @@ sudo apt update && sudo apt install -y terraform
 curl -sSLo /tmp/awscliv2.zip https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
 unzip -q /tmp/awscliv2.zip -d /tmp && sudo /tmp/aws/install
 
-# Python tooling (pre-commit, awslocal)
+# pre-commit (Python tooling)
 sudo apt install -y pipx unzip && pipx ensurepath
-pipx install pre-commit && pipx install awscli-local
+pipx install pre-commit
+
+# lstk: LocalStack's CLI. `lstk aws ...` runs AWS CLI commands against LocalStack.
+# It replaces the deprecated `awslocal`. Other install options: https://docs.localstack.cloud/aws/developer-tools/running-localstack/lstk/
+npm install -g @localstack/lstk
 
 # tflint, trivy, terraform-docs: download release binaries from each project's GitHub releases page
 #   https://github.com/terraform-linters/tflint/releases
@@ -78,10 +82,14 @@ make local-up        # start LocalStack
 make check           # fmt, validate, lint, security scan. Same as CI.
 make plan-local      # see what would change
 make apply-local     # apply the saved plan
-awslocal s3 ls       # poke at what you built
+lstk aws s3 ls       # poke at what you built
 make destroy-local
 make local-down
 ```
+
+> **`lstk aws` vs `aws`:** `lstk aws ...` talks to LocalStack. Plain `aws ...` uses your default
+> profile and talks to your **real** AWS project. Check which one you typed before running anything that
+> creates or deletes.
 
 Real AWS (`terraform/envs/dev`): **apply the budget first** (see [budget.tf](terraform/envs/dev/budget.tf)),
 keep `enable_rds` / `enable_redis` false unless you'll destroy in the same session, and always
