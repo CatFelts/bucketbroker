@@ -37,3 +37,15 @@
 # STRETCH
 #   - Encrypt and decrypt a string by hand: `awslocal kms encrypt --key-id alias/... --plaintext ...`
 # =============================================================================
+
+resource "aws_kms_key" "this" {
+  tags                    = var.tags
+  description             = var.description
+  enable_key_rotation     = true
+  deletion_window_in_days = var.deletion_window_in_days
+}
+
+resource "aws_kms_alias" "this" {
+  name          = "alias/${var.name}"
+  target_key_id = aws_kms_key.this.arn
+}

@@ -24,11 +24,13 @@ locals {
 #   }
 # }
 
-module "kms" {
-  source = "../../modules/kms_key"
+#module "kms" {
+#  source = "../../modules/kms_key"
 
-  # TODO: name = "${local.project}-${local.env}"
-}
+#name = "${local.project}-${local.env}"
+#description = "protects aws storage" # validate this is true
+#deletion_window_in_days = 7 # short pending window to keep things tidy
+#}
 
 # The expensive modules are behind feature flags. `count = 0` means "declared but not created".
 # Refer to them as module.postgres[0].endpoint.

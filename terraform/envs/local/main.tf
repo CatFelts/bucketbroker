@@ -15,7 +15,9 @@ locals {
 module "kms" {
   source = "../../modules/kms_key"
 
-  # TODO: name = "${local.project}-${local.env}"
+  name                    = "${local.project}-${local.env}"
+  description             = "protects localstack storage" # validate this is true
+  deletion_window_in_days = 7                             # short pending window to keep things tidy
 }
 
 module "blob" {
