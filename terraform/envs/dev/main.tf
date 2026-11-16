@@ -27,7 +27,9 @@ locals {
 module "kms" {
   source = "../../modules/kms_key"
 
-  # TODO: name = "${local.project}-${local.env}"
+  name                    = "${local.project}-${local.env}"
+  description             = "encrypts rds postgres and elasticache redis data"
+  deletion_window_in_days = 7 # short pending window to keep things tidy
 }
 
 # The expensive modules are behind feature flags. `count = 0` means "declared but not created".
