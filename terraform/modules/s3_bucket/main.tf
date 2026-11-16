@@ -34,8 +34,8 @@
 #
 # DONE WHEN
 #   [ ] `make check` passes. Trivy is the judge of "secure by default".
-#   [ ] After apply: `awslocal s3api get-bucket-encryption --bucket <name>` shows aws:kms
-#   [ ] `awslocal s3 cp README.md s3://<name>/` works, and a second upload creates a new version
+#   [ ] After apply: `lstk aws s3api get-bucket-encryption --bucket <name>` shows aws:kms
+#   [ ] `lstk aws s3 cp README.md s3://<name>/` works, and a second upload creates a new version
 #   [ ] You can explain: SSE-S3 vs SSE-KMS vs SSE-C, and why ACLs are disabled today
 #
 # STRETCH

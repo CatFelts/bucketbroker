@@ -31,9 +31,9 @@
 # DONE WHEN
 #   [ ] `make validate lint sec` passes
 #   [ ] `make plan-local` shows 2 resources to add (key + alias)
-#   [ ] After apply: `awslocal kms list-aliases` shows your alias
+#   [ ] After apply: `lstk aws kms list-aliases` shows your alias
 #   [ ] You can explain: CMK vs AWS-managed key vs AWS-owned key, and what envelope encryption is
 #
 # STRETCH
-#   - Encrypt and decrypt a string by hand: `awslocal kms encrypt --key-id alias/... --plaintext ...`
+#   - Encrypt and decrypt a string by hand: `lstk aws kms encrypt --key-id alias/... --plaintext ...`
 # =============================================================================
