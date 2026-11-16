@@ -1,17 +1,17 @@
 variable "deletion_window_in_days" {
-  description = "number between 7 and 30, the duration a kms key is in pending state before deletion"
+  description = "Number between 7 and 30, the duration a kms key is in pending state before deletion."
   type        = number
   default     = 30 #setting to the max duration if a user forgets
 
   validation {
-    # enforce number range 7=n<=30
+    # enforce number range 7<=n<=30
     condition     = var.deletion_window_in_days >= 7 && var.deletion_window_in_days <= 30
     error_message = "The deletion window must be between 7 and 30 days."
   }
 }
 
 variable "name" {
-  description = "lowercase alphanumeric string which can include hyphens, used to generate the key alias 'alias/{name}'"
+  description = "Lowercase alphanumeric string which can include hyphens, used to generate the key alias 'alias/{name}'."
   type        = string
   # no default, required
 
@@ -23,7 +23,7 @@ variable "name" {
 }
 
 variable "description" {
-  description = "description of what the given key protects"
+  description = "Description of what the given KMS key protects."
   type        = string
   default     = ""
 
@@ -35,7 +35,7 @@ variable "description" {
 }
 
 variable "tags" {
-  description = "map of key/value tags to attach to the key"
+  description = "Map of key/value tags to attach to the KMS key."
   type        = map(string)
   default     = {} # no extra tags by default
 }

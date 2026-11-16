@@ -16,8 +16,8 @@ module "kms" {
   source = "../../modules/kms_key"
 
   name                    = "${local.project}-${local.env}"
-  description             = "protects localstack storage" # validate this is true
-  deletion_window_in_days = 7                             # short pending window to keep things tidy
+  description             = "encrypts blob (s3) and queue (sqs) data in localstack"
+  deletion_window_in_days = 7 # short pending window to keep things tidy
 }
 
 module "blob" {
