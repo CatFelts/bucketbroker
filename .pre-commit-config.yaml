@@ -12,6 +12,14 @@ repos:
       - id: detect-private-key
       - id: check-added-large-files
 
+  # Scans staged changes for hardcoded secrets (AWS keys, API tokens, etc.) before they're committed.
+  # detect-private-key above only catches PEM private keys; gitleaks covers hundreds of credential formats.
+  # Once a repo is public, a leaked key is scraped within minutes: if one ever slips through, rotate it.
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.30.1
+    hooks:
+      - id: gitleaks
+
   - repo: https://github.com/antonbabenko/pre-commit-terraform
     rev: v1.109.3
     hooks:
