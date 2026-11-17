@@ -4,6 +4,8 @@ A learning project. A developer asks for storage (`blob`, `queue`, …) for a te
 provisions it **encrypted, isolated, within quota, and tagged** on AWS, using Terraform modules
 driven by a Go control plane.
 
+Status: In-progress! KMS Module done, s3 bucket module in progress, sqs rds, and redis planned next.
+
 ```mermaid
 flowchart LR
     dev[Developer] -->|"POST /v1/tenants/acme/storage {type: blob}"| cp[Go control plane]
