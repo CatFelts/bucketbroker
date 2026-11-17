@@ -42,3 +42,10 @@
 #   - Access logging to a separate log bucket (trivy will suggest this)
 #   - Object Lock (WORM). It matters for DocuSign-style compliance and audit data.
 # =============================================================================
+
+resource "aws_s3_bucket" "this" {
+  bucket              = var.name
+  object_lock_enabled = var.object_lock_enabled
+  tags                = var.tags
+}
+#reference https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket
