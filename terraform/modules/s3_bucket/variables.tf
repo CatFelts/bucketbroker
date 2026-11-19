@@ -41,12 +41,23 @@ variable "tags" {
 }
 
 variable "noncurrent_version_expiration" {
-  description = "Specifies the number of days an object is noncurrent before S3 can perform an associated action."
+  description = "Specifies the number of days an object is noncurrent before S3 can expire the object."
   type        = number
   default     = 30 #days
 
   validation {
     condition     = var.noncurrent_version_expiration > 0
+    error_message = "Value must be a non-zero positive integer."
+  }
+}
+
+variable "abort_incomplete_multipart_upload" {
+  description = "Number of days after S3 will abort an incomplete multipart upload."
+  type        = number
+  default     = 30 #days
+
+  validation {
+    condition     = var.abort_incomplete_multipart_upload > 0
     error_message = "Value must be a non-zero positive integer."
   }
 }
