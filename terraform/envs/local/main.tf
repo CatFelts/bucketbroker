@@ -23,9 +23,9 @@ module "kms" {
 module "blob" {
   source = "../../modules/s3_bucket"
 
-  # TODO: name          = "${local.project}-${local.env}-blob"
-  # TODO: kms_key_arn   = module.kms.key_arn
-  # TODO: force_destroy = true
+  name          = "${local.project}-${local.env}-blob"
+  kms_key_arn   = module.kms.key_arn
+  force_destroy = true
 }
 
 module "queue" {
